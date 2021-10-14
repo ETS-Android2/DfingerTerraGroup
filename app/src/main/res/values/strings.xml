@@ -1,5 +1,9 @@
 <resources>
-    <string name="app_name">I am literally Malding</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">DFinger runway analysis tool (WIP)</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="twoFASubmit">Submit</string>
+    <string name="please_enter_your_2fa_code">Please enter your 2FA code</string>
+    <string name="login">Username or email</string>
+    <string name="Login">Login</string>
+    <string name="password">Password</string>
 </resources>
