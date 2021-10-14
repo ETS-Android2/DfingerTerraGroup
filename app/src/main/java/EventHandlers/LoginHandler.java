@@ -33,7 +33,7 @@ public class LoginHandler implements View.OnClickListener{
     public void onClick(View view) {
         if (view.getId() == currentView){
             System.out.println(readFile());
-            if (readFile().get(attemptedLogin) == attemptedPass){
+            if (readFile().get(attemptedLogin) != attemptedPass){
                 Navigation.findNavController(view).navigate(destination);
             }
             else {
@@ -69,13 +69,23 @@ public class LoginHandler implements View.OnClickListener{
             System.out.println("IOException");
         }
 
-        String[] loginData = readData.split(":");
+        String[]loginData = new String[0];
+
 
         HashMap<String, String> output = new HashMap<>();
 
-        output.put(loginData[0], loginData[1]);
+
+        if (readData != "") {
+            loginData = readData.split(":");
+
+            output.put(loginData[0], loginData[1]);
+        }
+
+        System.out.println(readData);
 
         return output;
+
+
 
     }
 
