@@ -15,10 +15,20 @@
             app:destination="@id/twoFAFrag"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_logInFrag_to_signUp"
+            app:destination="@id/signUp"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/twoFAFrag"
         android:name="com.example.iamliterallymalding.TwoFAFrag"
         android:label="fragment_two_f_a"
         tools:layout="@layout/fragment_two_f_a" />
+    <fragment
+        android:id="@+id/signUp"
+        android:name="com.example.iamliterallymalding.SignUp"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" />
 </navigation>

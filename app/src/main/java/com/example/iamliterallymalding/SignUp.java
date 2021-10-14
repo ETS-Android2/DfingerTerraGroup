@@ -9,28 +9,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import EventHandlers.LoginHandler;
-import EventHandlers.NavHandler;
+import EventHandlers.TextSaveHandler;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link LogInFrag#newInstance} factory method to
+ * Use the {@link SignUp#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LogInFrag extends Fragment{
+public class SignUp extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    public LogInFrag() {
+    public SignUp() {
         // Required empty public constructor
     }
 
@@ -40,11 +39,11 @@ public class LogInFrag extends Fragment{
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment LogInFrag.
+     * @return A new instance of fragment SignUp.
      */
     // TODO: Rename and change types and number of parameters
-    public static LogInFrag newInstance(String param1, String param2) {
-        LogInFrag fragment = new LogInFrag();
+    public static SignUp newInstance(String param1, String param2) {
+        SignUp fragment = new SignUp();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,36 +58,25 @@ public class LogInFrag extends Fragment{
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        NavHandler signup;
-        LoginHandler login;
-
-
-
         // Inflate the layout for this fragment
 
-        View v = inflater.inflate(R.layout.fragment_log_in, container, false);
+        View v = inflater.inflate(R.layout.fragment_sign_up, container, false);
 
-        String attemptedLogin = ((EditText)v.findViewById(R.id.usernameInput)).getText().toString();
-        String attemptedPass = ((EditText)v.findViewById(R.id.passInput)).getText().toString();
+        String email = ((EditText)v.findViewById(R.id.emailInput)).getText().toString();
+        String pass = ((EditText)v.findViewById(R.id.newPassInput)).getText().toString();
 
-        login = new LoginHandler (R.id.logIn, R.id.action_logInFrag_to_twoFAFrag, attemptedLogin, attemptedPass, v.getContext());
-        signup = new NavHandler(R.id.signupBtn, R.id.action_logInFrag_to_signUp);
+        TextSaveHandler txt = new TextSaveHandler(R.id.signupBtn, email, pass, v.getContext());
 
+        Button signupSubmit = v.findViewById(R.id.signupSubmit);
 
+        signupSubmit.setOnClickListener(txt);
 
-        Button logInBtn = v.findViewById(R.id.logIn);
-        TextView signupBtn = v.findViewById(R.id.signupBtn);
-
-        signupBtn.setOnClickListener(signup);
-        logInBtn.setOnClickListener(login);
         return v;
     }
-
-
 }
