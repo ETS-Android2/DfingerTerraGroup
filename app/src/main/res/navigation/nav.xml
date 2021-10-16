@@ -20,6 +20,11 @@
             app:destination="@id/signUp"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_logInFrag_to_generalOw"
+            app:destination="@id/generalOw"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/twoFAFrag"
@@ -37,4 +42,9 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left" />
     </fragment>
+    <fragment
+        android:id="@+id/generalOw"
+        android:name="com.example.iamliterallymalding.GeneralOw"
+        android:label="fragment_general_ow"
+        tools:layout="@layout/fragment_general_ow" />
 </navigation>

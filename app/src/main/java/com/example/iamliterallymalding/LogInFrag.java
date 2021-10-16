@@ -73,10 +73,10 @@ public class LogInFrag extends Fragment{
 
         View v = inflater.inflate(R.layout.fragment_log_in, container, false);
 
-        String attemptedLogin = ((EditText)v.findViewById(R.id.usernameInput)).getText().toString();
-        String attemptedPass = ((EditText)v.findViewById(R.id.passInput)).getText().toString();
+        EditText attemptedLogin = v.findViewById(R.id.usernameInput);
+        EditText attemptedPass = v.findViewById(R.id.passInput);
 
-        login = new DataInput();
+        login = new DataInput(attemptedLogin, attemptedPass, v.getContext());
         signup = new NavHandler(R.id.signupBtn, R.id.action_logInFrag_to_signUp);
 
 
