@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VideoViewFrag" >
+    tools:context=".radarPageFrag">
 
     <Button
-        android:id="@+id/videoPageButton"
+        android:id="@+id/RadarPageButton"
         android:layout_width="139dp"
         android:layout_height="82dp"
         android:layout_marginStart="136dp"
         android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/videoView"
+        app:layout_constraintTop_toBottomOf="@+id/radarView"
         tools:text="HOME" />
 
     <VideoView
-        android:id="@+id/videoView"
+        android:id="@+id/radarView"
         android:layout_width="364dp"
         android:layout_height="506dp"
         android:layout_marginStart="15dp"
@@ -28,4 +28,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
