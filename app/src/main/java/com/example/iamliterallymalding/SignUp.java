@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import EventHandlers.TextSaveHandler;
+import DatabasingClasses.DataOutput;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -68,14 +68,11 @@ public class SignUp extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_sign_up, container, false);
 
-        String email = ((EditText)v.findViewById(R.id.emailInput)).getText().toString();
-        String pass = ((EditText)v.findViewById(R.id.newPassInput)).getText().toString();
 
-        TextSaveHandler txt = new TextSaveHandler(R.id.signupBtn, email, pass, v.getContext());
 
         Button signupSubmit = v.findViewById(R.id.signupSubmit);
 
-        signupSubmit.setOnClickListener(txt);
+        signupSubmit.setOnClickListener(new DataOutput(v.findViewById(R.id.emailInput), v.findViewById(R.id.newPassInput), v.getContext()));
 
         return v;
     }

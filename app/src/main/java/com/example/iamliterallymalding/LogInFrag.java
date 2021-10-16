@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import EventHandlers.LoginHandler;
+import DatabasingClasses.DataInput;
 import EventHandlers.NavHandler;
 
 /**
@@ -66,18 +66,17 @@ public class LogInFrag extends Fragment{
                              Bundle savedInstanceState) {
 
         NavHandler signup;
-        LoginHandler login;
-
-
+        DataInput login;
 
         // Inflate the layout for this fragment
+
 
         View v = inflater.inflate(R.layout.fragment_log_in, container, false);
 
         String attemptedLogin = ((EditText)v.findViewById(R.id.usernameInput)).getText().toString();
         String attemptedPass = ((EditText)v.findViewById(R.id.passInput)).getText().toString();
 
-        login = new LoginHandler (R.id.logIn, R.id.action_logInFrag_to_twoFAFrag, attemptedLogin, attemptedPass, v.getContext());
+        login = new DataInput();
         signup = new NavHandler(R.id.signupBtn, R.id.action_logInFrag_to_signUp);
 
 
@@ -89,6 +88,4 @@ public class LogInFrag extends Fragment{
         logInBtn.setOnClickListener(login);
         return v;
     }
-
-
 }
