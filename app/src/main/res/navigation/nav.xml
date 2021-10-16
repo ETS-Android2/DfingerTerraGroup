@@ -30,7 +30,11 @@
         android:id="@+id/twoFAFrag"
         android:name="com.example.iamliterallymalding.TwoFAFrag"
         android:label="fragment_two_f_a"
-        tools:layout="@layout/fragment_two_f_a" />
+        tools:layout="@layout/fragment_two_f_a" >
+        <action
+            android:id="@+id/action_twoFAFrag_to_generalOw"
+            app:destination="@id/generalOw" />
+    </fragment>
     <fragment
         android:id="@+id/signUp"
         android:name="com.example.iamliterallymalding.SignUp"

@@ -29,12 +29,14 @@
         android:layout_marginStart="101dp"
         android:layout_marginEnd="101dp"
         android:layout_marginBottom="64dp"
+        android:autofillHints="2FA Code"
         android:ems="10"
         android:inputType="numberPassword"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:autofillHints="2FA Code" />
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/textView"
