@@ -9,4 +9,6 @@
     <string name="signup">New user? tap here to sign up</string>
     <string name="sign_up">Sign up</string>
     <string name="email_example">example@example.com</string>
+    <string name="log_out">Log Out</string>
+    <string name="home">Home</string>
 </resources>

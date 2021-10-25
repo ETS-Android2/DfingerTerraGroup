@@ -13,10 +13,11 @@
         android:layout_marginStart="162dp"
         android:layout_marginEnd="162dp"
         android:layout_marginBottom="100dp"
+        android:text="@string/log_out"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="Log Out" />
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
         android:id="@+id/generalOVImage"
