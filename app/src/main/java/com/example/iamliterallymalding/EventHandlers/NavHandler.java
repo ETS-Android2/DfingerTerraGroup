@@ -1,4 +1,4 @@
-package EventHandlers;
+package com.example.iamliterallymalding.EventHandlers;
 
 import android.view.View;
 

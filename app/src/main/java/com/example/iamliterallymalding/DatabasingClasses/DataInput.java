@@ -1,4 +1,4 @@
-package DatabasingClasses;
+package com.example.iamliterallymalding.DatabasingClasses;
 
 import android.content.Context;
 import android.view.View;
@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.navigation.Navigation;
 
 import com.example.iamliterallymalding.R;
+import com.mongodb.MongoTimeoutException;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 
@@ -35,13 +36,20 @@ public class DataInput extends Thread implements View.OnClickListener{
     public void onClick(View view) {
 
         Callable inputThread = (Callable<Boolean>) () -> { //flex
-            MongoCollection<Document> users = MongoClients.create("mongodb://192.168.1.64:27017")
-                    .getDatabase("userData")
-                    .getCollection("users");
+            try {
+                MongoCollection<Document> users = MongoClients.create("mongodb://192.168.1.64:27017")
+                        .getDatabase("userData")
+                        .getCollection("users");
 
-            Document query = new Document ("userName", username.getText().toString());
 
-            return users.find(query).first() != null && Objects.requireNonNull(users.find(query).first()).getString("password").equals(password.getText().toString());
+                Document query = new Document("userName", username.getText().toString());
+
+                return users.find(query).first() != null && Objects.requireNonNull(users.find(query).first()).getString("password").equals(password.getText().toString());
+            }
+            catch (MongoTimeoutException e){
+                return false;
+            }
+
         };
 
         ExecutorService inputService = Executors.newFixedThreadPool(2);

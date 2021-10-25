@@ -11,8 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import DatabasingClasses.DataInput;
-import EventHandlers.NavHandler;
+import com.example.iamliterallymalding.DatabasingClasses.DataInput;
+import com.example.iamliterallymalding.EventHandlers.NavHandler;
 
 /**
  * A simple {@link Fragment} subclass.
