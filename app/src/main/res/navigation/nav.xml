@@ -73,20 +73,36 @@
         android:id="@+id/imagePage"
         android:name="com.example.iamliterallymalding.ImagePage"
         android:label="fragment_image_page"
-        tools:layout="@layout/fragment_image_page" />
+        tools:layout="@layout/fragment_image_page" >
+        <action
+            android:id="@+id/action_imagePage_to_generalOw"
+            app:destination="@id/generalOw" />
+    </fragment>
     <fragment
         android:id="@+id/radarPageFrag"
         android:name="com.example.iamliterallymalding.radarPageFrag"
         android:label="fragment_radar_page"
-        tools:layout="@layout/fragment_radar_page" />
+        tools:layout="@layout/fragment_radar_page" >
+        <action
+            android:id="@+id/action_radarPageFrag_to_generalOw"
+            app:destination="@id/generalOw" />
+    </fragment>
     <fragment
         android:id="@+id/liadrPageFrag"
         android:name="com.example.iamliterallymalding.LiadrPageFrag"
         android:label="fragment_liadr_page"
-        tools:layout="@layout/fragment_liadr_page" />
+        tools:layout="@layout/fragment_liadr_page" >
+        <action
+            android:id="@+id/action_liadrPageFrag_to_generalOw"
+            app:destination="@id/generalOw" />
+    </fragment>
     <fragment
         android:id="@+id/videoViewFrag"
         android:name="com.example.iamliterallymalding.VideoViewFrag"
         android:label="fragment_video_view"
-        tools:layout="@layout/fragment_video_view" />
+        tools:layout="@layout/fragment_video_view" >
+        <action
+            android:id="@+id/action_videoViewFrag_to_generalOw"
+            app:destination="@id/generalOw" />
+    </fragment>
 </navigation>

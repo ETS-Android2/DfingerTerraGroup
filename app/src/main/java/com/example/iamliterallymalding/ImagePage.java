@@ -3,17 +3,19 @@ package com.example.iamliterallymalding;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ImagePage#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ImagePage extends Fragment {
+public class ImagePage extends Fragment implements View.OnClickListener{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +61,18 @@ public class ImagePage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_image_page, container, false);
+        View v = inflater.inflate(R.layout.fragment_image_page, container, false);
+
+        Button imageHomeClick = v.findViewById(R.id.ImagePageButton);
+        imageHomeClick.setOnClickListener(this);
+
+        return v;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == R.id.ImagePageButton){
+            Navigation.findNavController(v).navigate(R.id.action_imagePage_to_generalOw);
+        }
     }
 }

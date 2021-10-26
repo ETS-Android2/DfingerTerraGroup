@@ -3,17 +3,20 @@ package com.example.iamliterallymalding;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.VideoView;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link GeneralOw#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class GeneralOw extends Fragment {
+public class GeneralOw extends Fragment implements View.OnClickListener{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -53,12 +56,43 @@ public class GeneralOw extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_general_ow, container, false);
+        View v = inflater.inflate(R.layout.fragment_general_ow, container, false);
+
+        ImageView radarClick = v.findViewById(R.id.generalOVRadar);
+        radarClick.setOnClickListener(this);
+
+        ImageView imageClick = v.findViewById(R.id.generalOVImage);
+        imageClick.setOnClickListener(this);
+
+        VideoView videoClick = v.findViewById(R.id.generalOVVideo);
+        videoClick.setOnClickListener(this);
+
+        VideoView lidarClick = v.findViewById(R.id.generalOVLidar);
+        lidarClick.setOnClickListener(this);
+        return v;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == R.id.generalOVRadar){
+            Navigation.findNavController(v).navigate(R.id.action_generalOw_to_radarPageFrag);
+        }
+        else if(v.getId() == R.id.generalOVImage){
+            Navigation.findNavController(v).navigate(R.id.action_generalOw_to_imagePage);
+        }
+        else if(v.getId() == R.id.generalOVVideo){
+            Navigation.findNavController(v).navigate(R.id.action_generalOw_to_videoViewFrag);
+        }
+        else if(v.getId() == R.id.generalOVLidar){
+            Navigation.findNavController(v).navigate(R.id.action_generalOw_to_liadrPageFrag);
+        }
     }
 }
