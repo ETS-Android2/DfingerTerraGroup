@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GeneralOw">
+    tools:context="com.example.iamliterallymalding.GeneralOw">
 
     <Button
         android:id="@+id/logOutButton"
@@ -39,7 +39,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/generalOVLidar" />
 
-    <VideoView
+    <com.example.iamliterallymalding.OpenGL.OpenGLView
         android:id="@+id/generalOVLidar"
         android:layout_width="140dp"
         android:layout_height="220dp"

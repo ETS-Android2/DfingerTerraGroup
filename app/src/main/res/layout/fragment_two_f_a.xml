@@ -5,7 +5,7 @@
     android:id="@+id/twoFA"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TwoFAFrag">
+    tools:context="com.example.iamliterallymalding.TwoFAFrag">
 
     <!-- TODO: Update blank fragment layout -->
 

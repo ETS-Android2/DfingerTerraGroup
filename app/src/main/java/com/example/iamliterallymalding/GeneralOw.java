@@ -1,5 +1,6 @@
 package com.example.iamliterallymalding;
 
+import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,12 +12,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.VideoView;
 
+import com.example.iamliterallymalding.OpenGL.OpenGLRenderer;
+
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link GeneralOw#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class GeneralOw extends Fragment implements View.OnClickListener{
+public class GeneralOw extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,6 +33,8 @@ public class GeneralOw extends Fragment implements View.OnClickListener{
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private GLSurfaceView openGLView;
 
     public GeneralOw() {
         // Required empty public constructor
@@ -56,8 +65,6 @@ public class GeneralOw extends Fragment implements View.OnClickListener{
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
     }
 
     @Override
@@ -66,33 +73,20 @@ public class GeneralOw extends Fragment implements View.OnClickListener{
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_general_ow, container, false);
 
-        ImageView radarClick = v.findViewById(R.id.generalOVRadar);
-        radarClick.setOnClickListener(this);
+        openGLView = v.findViewById(R.id.generalOVLidar);
 
-        ImageView imageClick = v.findViewById(R.id.generalOVImage);
-        imageClick.setOnClickListener(this);
-
-        VideoView videoClick = v.findViewById(R.id.generalOVVideo);
-        videoClick.setOnClickListener(this);
-
-        VideoView lidarClick = v.findViewById(R.id.generalOVLidar);
-        lidarClick.setOnClickListener(this);
         return v;
     }
 
     @Override
-    public void onClick(View v) {
-        if(v.getId() == R.id.generalOVRadar){
-            Navigation.findNavController(v).navigate(R.id.action_generalOw_to_radarPageFrag);
-        }
-        else if(v.getId() == R.id.generalOVImage){
-            Navigation.findNavController(v).navigate(R.id.action_generalOw_to_imagePage);
-        }
-        else if(v.getId() == R.id.generalOVVideo){
-            Navigation.findNavController(v).navigate(R.id.action_generalOw_to_videoViewFrag);
-        }
-        else if(v.getId() == R.id.generalOVLidar){
-            Navigation.findNavController(v).navigate(R.id.action_generalOw_to_liadrPageFrag);
-        }
+    public void onResume() {
+        super.onResume();
+        openGLView.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        openGLView.onPause();
     }
 }

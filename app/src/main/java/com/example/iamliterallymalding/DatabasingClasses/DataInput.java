@@ -44,12 +44,12 @@ public class DataInput extends Thread implements View.OnClickListener{
 
                 Document query = new Document("userName", username.getText().toString());
 
-                return users.find(query).first() != null && Objects.requireNonNull(users.find(query).first()).getString("password").equals(password.getText().toString());
+                return users.find(query).first() != null && Objects.requireNonNull(users.find(query).first()).getString("password")
+                        .equals(password.getText().toString());
             }
             catch (MongoTimeoutException e){
                 return false;
             }
-
         };
 
         ExecutorService inputService = Executors.newFixedThreadPool(2);
@@ -69,8 +69,6 @@ public class DataInput extends Thread implements View.OnClickListener{
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
-
-
     }
 }
 
