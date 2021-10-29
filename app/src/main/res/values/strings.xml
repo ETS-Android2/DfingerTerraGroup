@@ -11,4 +11,5 @@
     <string name="email_example">example@example.com</string>
     <string name="log_out">Log Out</string>
     <string name="home">Home</string>
+    <string name="logging_you_in">Logging you in</string>
 </resources>

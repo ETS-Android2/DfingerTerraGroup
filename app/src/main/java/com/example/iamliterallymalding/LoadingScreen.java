@@ -1,26 +1,30 @@
 package com.example.iamliterallymalding;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import com.example.iamliterallymalding.DatabasingClasses.DataInput;
-import com.example.iamliterallymalding.EventHandlers.NavHandler;
+import com.example.iamliterallymalding.Tasks.LoginTask;
+
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link LogInFrag#newInstance} factory method to
+ * Use the {@link LoadingScreen#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LogInFrag extends Fragment{
+public class LoadingScreen extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,7 +37,7 @@ public class LogInFrag extends Fragment{
 
     private EditText username, password;
 
-    public LogInFrag() {
+    public LoadingScreen() {
         // Required empty public constructor
     }
 
@@ -43,11 +47,11 @@ public class LogInFrag extends Fragment{
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment LogInFrag.
+     * @return A new instance of fragment LoadingScreen.
      */
     // TODO: Rename and change types and number of parameters
-    public static LogInFrag newInstance(String param1, String param2) {
-        LogInFrag fragment = new LogInFrag();
+    public static LoadingScreen newInstance(String param1, String param2) {
+        LoadingScreen fragment = new LoadingScreen();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -67,30 +71,36 @@ public class LogInFrag extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
-
         // Inflate the layout for this fragment
 
+        View view = inflater.inflate(R.layout.fragment_loading_screen, container, false);
 
-        View v = inflater.inflate(R.layout.fragment_log_in, container, false);
-
-        EditText attemptedLogin = v.findViewById(R.id.usernameInput);
-        EditText attemptedPass = v.findViewById(R.id.passInput);
-
+        username = view.findViewById(R.id.usernameInput);
+        password = view.findViewById(R.id.passInput);
 
 
 
 
 
-        Button logInBtn = v.findViewById(R.id.logIn);
-        TextView signupBtn = v.findViewById(R.id.signupBtn);
 
-        signupBtn.setOnClickListener(new NavHandler(R.id.signupBtn, R.id.action_logInFrag_to_signUp));
-        logInBtn.setOnClickListener(new NavHandler(R.id.logIn, R.id.action_logInFrag_to_loadingScreen));
-
-        return v;
+        return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
 
+        Future<Integer> task = Executors.newSingleThreadExecutor().submit(new LoginTask(username, password));
+
+        try {
+            System.out.println(task.get());
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /*
+
+
+    */
 }

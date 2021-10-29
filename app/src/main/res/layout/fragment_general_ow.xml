@@ -25,10 +25,12 @@
         android:layout_height="200dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="50dp"
+        android:clickable="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/generalOVRadar"
         tools:ignore="ImageContrastCheck"
-        tools:src="@tools:sample/avatars" />
+        tools:src="@tools:sample/avatars"
+        android:focusable="true" />
 
     <VideoView
         android:id="@+id/generalOVVideo"
@@ -37,6 +39,8 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="50dp"
         app:layout_constraintEnd_toEndOf="parent"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintTop_toBottomOf="@+id/generalOVLidar" />
 
     <com.example.iamliterallymalding.OpenGL.OpenGLView
@@ -45,6 +49,8 @@
         android:layout_height="220dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="50dp"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,6 +60,8 @@
         android:layout_height="220dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="50dp"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />

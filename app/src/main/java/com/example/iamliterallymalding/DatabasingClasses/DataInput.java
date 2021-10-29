@@ -3,25 +3,17 @@ package com.example.iamliterallymalding.DatabasingClasses;
 import android.content.Context;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.navigation.Navigation;
 
 import com.example.iamliterallymalding.R;
-import com.mongodb.MongoTimeoutException;
-import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoCollection;
+import com.example.iamliterallymalding.Tasks.LoginTask;
 
-import org.bson.Document;
-
-import java.util.Objects;
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
 
-public class DataInput extends Thread implements View.OnClickListener{
+public class DataInput extends Thread{
 
     private final EditText username, password;
     private final Context ctx;
@@ -32,33 +24,55 @@ public class DataInput extends Thread implements View.OnClickListener{
         this.ctx = ctx;
     }
 
-    @Override
+
     public void onClick(View view) {
 
-        Callable inputThread = (Callable<Boolean>) () -> { //flex
-            try {
-                MongoCollection<Document> users = MongoClients.create("mongodb://192.168.1.64:27017")
-                        .getDatabase("userData")
-                        .getCollection("users");
 
 
-                Document query = new Document("userName", username.getText().toString());
 
-                return users.find(query).first() != null && Objects.requireNonNull(users.find(query).first()).getString("password")
-                        .equals(password.getText().toString());
+        //System.out.println(loginTask.getConnStatus());
+
+
+
+
+
+
+
+
+
+
+
+        /*
+        LoginTask netwrk = new LoginTask();
+
+        ExecutorService execute = Executors.newSingleThreadExecutor();
+
+        Future<Boolean> task = execute.submit(netwrk);
+
+
+        try {
+            if (task.get()){
+                System.out.println("Db found");
             }
-            catch (MongoTimeoutException e){
-                return false;
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        //System.out.println(users.countDocuments());
+
+
+
+
         };
 
         ExecutorService inputService = Executors.newFixedThreadPool(2);
         Future<Boolean> input = inputService.submit(inputThread);
 
         try {
-            System.out.println(input.get());
+
             if (input.get()){
-                Navigation.findNavController(view).navigate(R.id.action_logInFrag_to_generalOw);
+                Navigation.findNavController(view).navigate(R.id.action_loadingScreen_to_twoFAFrag);
             }
             else {
                 Toast toast = Toast.makeText(ctx, "User doesn't exist or bad creds", Toast.LENGTH_SHORT);
@@ -69,7 +83,9 @@ public class DataInput extends Thread implements View.OnClickListener{
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
+         */
     }
+
 }
 
 

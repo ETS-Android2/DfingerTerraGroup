@@ -1,6 +1,7 @@
 package com.example.iamliterallymalding.Shapes;
 
 import android.opengl.GLES20;
+import android.opengl.GLES10;
 
 import com.example.iamliterallymalding.OpenGL.OpenGLRenderer;
 
@@ -16,6 +17,7 @@ public class Triangle {
             "attribute vec4 vPosition;" +
             "void main() {" +
             "   gl_Position = vPosition;" +
+            "   gl_PointSize = 10.0;"+
             "}";
     private final String fragmentShaderCode =
             "precision mediump float;" +
@@ -60,7 +62,7 @@ public class Triangle {
         GLES20.glVertexAttribPointer(positionHandle, coordsInVertex, GLES20.GL_FLOAT, false, vertexStride, vertexBuffer);
         colorHandle = GLES20.glGetUniformLocation(shaderProgram, "vColor");
         GLES20.glUniform4fv(colorHandle, 1, color, 0);
-        GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, vertexCount);
+        GLES20.glDrawArrays(GLES20.GL_POINTS, 0, vertexCount);
         GLES20.glDisableVertexAttribArray(positionHandle);
     }
 }

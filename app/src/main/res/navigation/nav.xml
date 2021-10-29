@@ -11,18 +11,13 @@
         android:label="fragment_log_in"
         tools:layout="@layout/fragment_log_in" >
         <action
-            android:id="@+id/action_logInFrag_to_twoFAFrag"
-            app:destination="@id/twoFAFrag"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left" />
-        <action
             android:id="@+id/action_logInFrag_to_signUp"
             app:destination="@id/signUp"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left" />
         <action
-            android:id="@+id/action_logInFrag_to_generalOw"
-            app:destination="@id/generalOw"
+            android:id="@+id/action_logInFrag_to_loadingScreen"
+            app:destination="@id/loadingScreen"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left" />
     </fragment>
@@ -41,10 +36,11 @@
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
+            android:id="@+id/action_signUp_to_loadingScreen"
+            app:destination="@id/loadingScreen" />
+        <action
             android:id="@+id/action_signUp_to_logInFrag"
-            app:destination="@id/logInFrag"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left" />
+            app:destination="@id/logInFrag" />
     </fragment>
     <fragment
         android:id="@+id/generalOw"
@@ -104,5 +100,14 @@
         <action
             android:id="@+id/action_videoViewFrag_to_generalOw"
             app:destination="@id/generalOw" />
+    </fragment>
+    <fragment
+        android:id="@+id/loadingScreen"
+        android:name="com.example.iamliterallymalding.LoadingScreen"
+        android:label="fragment_loading_screen"
+        tools:layout="@layout/fragment_loading_screen" >
+        <action
+            android:id="@+id/action_loadingScreen_to_twoFAFrag"
+            app:destination="@id/twoFAFrag" />
     </fragment>
 </navigation>
