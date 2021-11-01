@@ -90,17 +90,18 @@ public class LoadingScreen extends Fragment {
     public void onResume() {
         super.onResume();
 
-        Future<Integer> task = Executors.newSingleThreadExecutor().submit(new LoginTask(username, password));
 
-        try {
-            System.out.println(task.get());
-        } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
-        }
+
+
+
+
+
     }
 
-    /*
 
-
-    */
+    @Override
+    public void onPause() {
+        super.onPause();
+        System.out.println("paused");
+    }
 }

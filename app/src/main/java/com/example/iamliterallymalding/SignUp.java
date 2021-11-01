@@ -9,8 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.iamliterallymalding.DatabasingClasses.DataOutput;
-
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link SignUp#newInstance} factory method to
@@ -70,8 +68,7 @@ public class SignUp extends Fragment {
 
 
         Button signupSubmit = v.findViewById(R.id.signupSubmit);
-
-        signupSubmit.setOnClickListener(new DataOutput(v.findViewById(R.id.emailInput), v.findViewById(R.id.newPassInput), v.getContext()));
+        
 
         return v;
     }

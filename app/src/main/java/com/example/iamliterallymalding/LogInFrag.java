@@ -2,7 +2,6 @@ package com.example.iamliterallymalding;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -12,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.iamliterallymalding.DatabasingClasses.DataInput;
+import com.example.iamliterallymalding.EventHandlers.LoginHandler;
 import com.example.iamliterallymalding.EventHandlers.NavHandler;
 
 /**
@@ -87,10 +86,17 @@ public class LogInFrag extends Fragment{
         TextView signupBtn = v.findViewById(R.id.signupBtn);
 
         signupBtn.setOnClickListener(new NavHandler(R.id.signupBtn, R.id.action_logInFrag_to_signUp));
-        logInBtn.setOnClickListener(new NavHandler(R.id.logIn, R.id.action_logInFrag_to_loadingScreen));
+        logInBtn.setOnClickListener(new LoginHandler(v.findViewById(R.id.progressSpinner), this.getActivity(), attemptedLogin, attemptedPass));
+
 
         return v;
     }
 
 
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        System.out.println("runs");
+    }
 }
