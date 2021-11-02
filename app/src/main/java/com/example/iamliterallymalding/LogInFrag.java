@@ -36,15 +36,6 @@ public class LogInFrag extends Fragment{
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment LogInFrag.
-     */
-    // TODO: Rename and change types and number of parameters
     public static LogInFrag newInstance(String param1, String param2) {
         LogInFrag fragment = new LogInFrag();
         Bundle args = new Bundle();
@@ -67,20 +58,10 @@ public class LogInFrag extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
-
-        // Inflate the layout for this fragment
-
-
         View v = inflater.inflate(R.layout.fragment_log_in, container, false);
 
         EditText attemptedLogin = v.findViewById(R.id.usernameInput);
         EditText attemptedPass = v.findViewById(R.id.passInput);
-
-
-
-
-
 
         Button logInBtn = v.findViewById(R.id.logIn);
         TextView signupBtn = v.findViewById(R.id.signupBtn);
@@ -88,15 +69,6 @@ public class LogInFrag extends Fragment{
         signupBtn.setOnClickListener(new NavHandler(R.id.signupBtn, R.id.action_logInFrag_to_signUp));
         logInBtn.setOnClickListener(new LoginHandler(v.findViewById(R.id.progressSpinner), this.getActivity(), attemptedLogin, attemptedPass));
 
-
         return v;
-    }
-
-
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        System.out.println("runs");
     }
 }

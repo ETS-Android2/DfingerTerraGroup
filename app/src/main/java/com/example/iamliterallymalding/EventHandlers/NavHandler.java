@@ -22,5 +22,4 @@ public class NavHandler implements View.OnClickListener{
         if (view.getId() == currentView)
             Navigation.findNavController(view).navigate(destination);
     }
-
 }

@@ -2,8 +2,6 @@ package com.example.iamliterallymalding.Tasks;
 
 
 
-import android.view.View;
-import android.widget.ProgressBar;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -20,7 +18,6 @@ import org.bson.Document;
 import org.bson.conversions.Bson;
 
 import java.util.Objects;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 
 public class LoginTask implements Runnable {
@@ -63,9 +60,8 @@ public class LoginTask implements Runnable {
         try {
             Bson pingCommand = new BsonDocument("ping", new BsonInt64(1));
             userDb.runCommand(pingCommand);
-            Thread.sleep(5000);
             return true;
-        } catch (MongoException | InterruptedException e) {
+        } catch (MongoException e) {
             return false;
         }
     }

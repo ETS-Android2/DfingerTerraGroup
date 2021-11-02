@@ -33,36 +33,35 @@ public class LoginHandler implements View.OnClickListener{
 
         loading.setVisibility(View.VISIBLE);
 
-        int[] networkIn = new int[1];
+        if (username.getText().toString().equals("admin") && password.getText().toString().equals("123")){ //DEBUG FEATURE. REMOVE BEFORE FINAL
+            Navigation.findNavController(view).navigate(R.id.action_logInFrag_to_generalOw);
+        }
 
-        networkIn[0] = 2;
+        else {
 
-        int[] networkOut = networkIn.clone();
+            LoginTask loginTask = new LoginTask(username.getText().toString(), password.getText().toString());
 
-        LoginTask loginTask = new LoginTask(username.getText().toString(), password.getText().toString());
+            Thread login = new Thread(loginTask);
 
-        Thread login = new Thread(loginTask);
-
-        if (loading.getVisibility() == View.VISIBLE){
-            login.start();
-            loginTask.getOutput().observe((LifecycleOwner) act, new Observer<Integer>() {
-                @Override
-                public void onChanged(Integer integer) {
-                    if (loginTask.getOutput().getValue() == -1){
-                        loading.setVisibility(View.INVISIBLE);
-                        Toast toast = Toast.makeText(act, "Something went wrong contacting the database, please try again later", Toast.LENGTH_SHORT);
-                        toast.show();
+            if (loading.getVisibility() == View.VISIBLE) {
+                login.start();
+                loginTask.getOutput().observe((LifecycleOwner) act, new Observer<Integer>() {
+                    @Override
+                    public void onChanged(Integer integer) {
+                        if (loginTask.getOutput().getValue() == -1) {
+                            loading.setVisibility(View.INVISIBLE);
+                            Toast toast = Toast.makeText(act, "Something went wrong contacting the database, please try again later", Toast.LENGTH_SHORT);
+                            toast.show();
+                        } else if (loginTask.getOutput().getValue() == 0) {
+                            loading.setVisibility(View.INVISIBLE);
+                            Toast toast = Toast.makeText(act, "invalid creds", Toast.LENGTH_SHORT);
+                            toast.show();
+                        } else {
+                            Navigation.findNavController(view).navigate(R.id.action_logInFrag_to_twoFAFrag);
+                        }
                     }
-                    else if (loginTask.getOutput().getValue() == 0){
-                        loading.setVisibility(View.INVISIBLE);
-                        Toast toast = Toast.makeText(act, "invalid creds", Toast.LENGTH_SHORT);
-                        toast.show();
-                    }
-                    else {
-                        Navigation.findNavController(view).navigate(R.id.action_logInFrag_to_twoFAFrag);
-                    }
-                }
-            });
+                });
+            }
         }
     }
 }

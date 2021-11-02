@@ -20,6 +20,11 @@
             app:destination="@id/twoFAFrag"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_logInFrag_to_generalOw"
+            app:destination="@id/generalOw"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/twoFAFrag"
@@ -28,7 +33,12 @@
         tools:layout="@layout/fragment_two_f_a" >
         <action
             android:id="@+id/action_twoFAFrag_to_generalOw"
-            app:destination="@id/generalOw" />
+            app:destination="@id/generalOw"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_twoFAFrag_to_logInFrag"
+            app:destination="@id/logInFrag" />
     </fragment>
     <fragment
         android:id="@+id/signUp"
@@ -58,9 +68,6 @@
         <action
             android:id="@+id/action_generalOw_to_imagePage"
             app:destination="@id/imagePage" />
-        <action
-            android:id="@+id/action_generalOw_to_logInFrag"
-            app:destination="@id/logInFrag" />
     </fragment>
     <fragment
         android:id="@+id/imagePage"
