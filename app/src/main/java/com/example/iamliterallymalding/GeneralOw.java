@@ -9,9 +9,11 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.VideoView;
 
+import com.example.iamliterallymalding.EventHandlers.NavHandler;
 import com.example.iamliterallymalding.OpenGL.OpenGLRenderer;
 
 import javax.microedition.khronos.egl.EGL10;
@@ -75,6 +77,17 @@ public class GeneralOw extends Fragment {
 
         openGLView = v.findViewById(R.id.generalOVLidar);
 
+        View radarView = v.findViewById(R.id.generalOVRadar);
+        radarView.setOnClickListener(new NavHandler(R.id.generalOVRadar, R.id.radarPageFrag));
+
+        View imageView = v.findViewById(R.id.generalOVImage);
+        imageView.setOnClickListener(new NavHandler(R.id.generalOVImage, R.id.imagePage));
+
+        View lidarView = v.findViewById(R.id.generalOVLidar);
+        lidarView.setOnClickListener(new NavHandler(R.id.generalOVLidar, R.id.liadrPageFrag));
+
+        View videoView = v.findViewById(R.id.generalOVVideo);
+        videoView.setOnClickListener(new NavHandler(R.id.generalOVVideo, R.id.videoViewFrag));
         return v;
     }
 
