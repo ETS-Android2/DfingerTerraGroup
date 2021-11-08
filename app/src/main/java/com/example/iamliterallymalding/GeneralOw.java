@@ -78,16 +78,16 @@ public class GeneralOw extends Fragment {
         openGLView = v.findViewById(R.id.generalOVLidar);
 
         View radarView = v.findViewById(R.id.generalOVRadar);
-        radarView.setOnClickListener(new NavHandler(R.id.generalOVRadar, R.id.radarPageFrag));
+        radarView.setOnClickListener(new NavHandler(R.id.generalOVRadar, R.id.action_generalOw_to_radarPageFrag));
 
         View imageView = v.findViewById(R.id.generalOVImage);
-        imageView.setOnClickListener(new NavHandler(R.id.generalOVImage, R.id.imagePage));
+        imageView.setOnClickListener(new NavHandler(R.id.generalOVImage, R.id.action_generalOw_to_imagePage));
 
         View lidarView = v.findViewById(R.id.generalOVLidar);
-        lidarView.setOnClickListener(new NavHandler(R.id.generalOVLidar, R.id.liadrPageFrag));
+        lidarView.setOnClickListener(new NavHandler(R.id.generalOVLidar, R.id.action_generalOw_to_liadrPageFrag));
 
         View videoView = v.findViewById(R.id.generalOVVideo);
-        videoView.setOnClickListener(new NavHandler(R.id.generalOVVideo, R.id.videoViewFrag));
+        videoView.setOnClickListener(new NavHandler(R.id.generalOVVideo, R.id.action_generalOw_to_videoViewFrag));
         return v;
     }
 
