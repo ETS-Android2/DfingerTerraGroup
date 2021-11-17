@@ -7,7 +7,7 @@ import androidx.navigation.Navigation;
 import com.example.iamliterallymalding.R;
 
 
-public class NavHandler implements View.OnClickListener{
+public class NavHandler implements View.OnClickListener{ //this class handles the navigation event
 
     private final int currentView;
     private final int destination;
