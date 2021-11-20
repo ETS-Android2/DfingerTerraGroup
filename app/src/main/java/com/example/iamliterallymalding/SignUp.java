@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.iamliterallymalding.EventHandlers.SignUpHandler;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link SignUp#newInstance} factory method to
@@ -67,7 +69,8 @@ public class SignUp extends Fragment {
 
 
 
-        Button signupSubmit = v.findViewById(R.id.signupSubmit);
+         v.findViewById(R.id.signupSubmit).setOnClickListener(new SignUpHandler(v.findViewById(R.id.signUpProgress), this.getContext(),
+                 v.findViewById(R.id.emailInput), v.findViewById(R.id.newPassInput)));
         
 
         return v;
