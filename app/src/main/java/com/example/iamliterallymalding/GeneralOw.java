@@ -38,8 +38,8 @@ public class GeneralOw extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private GLSurfaceView openGLView;
-    private float [] lidarData;
+    private static GLSurfaceView openGLView;
+    private static float [] lidarData;
 
 
     public GeneralOw() {
@@ -82,13 +82,16 @@ public class GeneralOw extends Fragment {
 
         openGLView = v.findViewById(R.id.generalOVLidar);
 
+
+
         getParentFragmentManager().setFragmentResultListener("lidarDataRequest", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
-                lidarData = bundle.getFloatArray("lidarData");
-                openGLView.setRenderer(new OpenGLRenderer(lidarData));
+                lidarData = bundle.getFloatArray("lidarData").clone();
+                GeneralOw.renderLidar();
             }
         });
+
 
 
         View radarView = v.findViewById(R.id.generalOVRadar);
@@ -107,12 +110,31 @@ public class GeneralOw extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        openGLView.onResume();
+        try {
+            openGLView.onResume();
+        }
+        catch (NullPointerException e){
+            renderLidar();
+            openGLView.onResume();
+        }
     }
 
     @Override
     public void onPause() {
         super.onPause();
         openGLView.onPause();
+
+        try {
+            openGLView.onPause();
+        }
+        catch (NullPointerException e){
+            renderLidar();
+            openGLView.onPause();
+        }
+    }
+
+
+    protected static void renderLidar(){
+        openGLView.setRenderer(new OpenGLRenderer(lidarData));
     }
 }
