@@ -1,21 +1,21 @@
-package com.example.iamliterallymalding;
+package com.example.iamliterallymalding.Fragments;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+
+import com.example.iamliterallymalding.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link VideoViewFrag#newInstance} factory method to
+ * Use the {@link TwoFAFrag#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class VideoViewFrag extends Fragment implements View.OnClickListener{
+public class TwoFAFrag extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class VideoViewFrag extends Fragment implements View.OnClickListener{
     private String mParam1;
     private String mParam2;
 
-    public VideoViewFrag() {
+    public TwoFAFrag() {
         // Required empty public constructor
     }
 
@@ -36,11 +36,11 @@ public class VideoViewFrag extends Fragment implements View.OnClickListener{
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment VideoViewFrag.
+     * @return A new instance of fragment TwoFAFrag.
      */
     // TODO: Rename and change types and number of parameters
-    public static VideoViewFrag newInstance(String param1, String param2) {
-        VideoViewFrag fragment = new VideoViewFrag();
+    public static TwoFAFrag newInstance(String param1, String param2) {
+        TwoFAFrag fragment = new TwoFAFrag();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,18 +61,6 @@ public class VideoViewFrag extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_video_view, container, false);
-
-        Button videoHomeClick = v.findViewById(R.id.videoPageButton);
-        videoHomeClick.setOnClickListener(this);
-
-        return v;
-    }
-
-    @Override
-    public void onClick(View v) {
-        if(v.getId() == R.id.videoPageButton){
-            Navigation.findNavController(v).navigate(R.id.action_videoViewFrag_to_generalOw);
-        }
+        return inflater.inflate(R.layout.fragment_two_f_a, container, false);
     }
 }

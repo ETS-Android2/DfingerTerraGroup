@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/logInFrag"
-        android:name="com.example.iamliterallymalding.LogInFrag"
+        android:name="com.example.iamliterallymalding.Fragments.LogInFrag"
         android:label="fragment_log_in"
         tools:layout="@layout/fragment_log_in" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/twoFAFrag"
-        android:name="com.example.iamliterallymalding.TwoFAFrag"
+        android:name="com.example.iamliterallymalding.Fragments.TwoFAFrag"
         android:label="fragment_two_f_a"
         tools:layout="@layout/fragment_two_f_a" >
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUp"
-        android:name="com.example.iamliterallymalding.SignUp"
+        android:name="com.example.iamliterallymalding.Fragments.SignUp"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/generalOw"
-        android:name="com.example.iamliterallymalding.GeneralOw"
+        android:name="com.example.iamliterallymalding.Fragments.GeneralOw"
         android:label="fragment_general_ow"
         tools:layout="@layout/fragment_general_ow" >
         <action
@@ -72,7 +72,7 @@
     </fragment>
     <fragment
         android:id="@+id/imagePage"
-        android:name="com.example.iamliterallymalding.ImagePage"
+        android:name="com.example.iamliterallymalding.Fragments.ImagePage"
         android:label="fragment_image_page"
         tools:layout="@layout/fragment_image_page" >
         <action
@@ -81,7 +81,7 @@
     </fragment>
     <fragment
         android:id="@+id/radarPageFrag"
-        android:name="com.example.iamliterallymalding.radarPageFrag"
+        android:name="com.example.iamliterallymalding.Fragments.radarPageFrag"
         android:label="fragment_radar_page"
         tools:layout="@layout/fragment_radar_page" >
         <action
@@ -90,7 +90,7 @@
     </fragment>
     <fragment
         android:id="@+id/liadrPageFrag"
-        android:name="com.example.iamliterallymalding.LiadrPageFrag"
+        android:name="com.example.iamliterallymalding.Fragments.LiadrPageFrag"
         android:label="fragment_liadr_page"
         tools:layout="@layout/fragment_liadr_page" >
         <action
@@ -99,7 +99,7 @@
     </fragment>
     <fragment
         android:id="@+id/videoViewFrag"
-        android:name="com.example.iamliterallymalding.VideoViewFrag"
+        android:name="com.example.iamliterallymalding.Fragments.VideoViewFrag"
         android:label="fragment_video_view"
         tools:layout="@layout/fragment_video_view" >
         <action
@@ -108,7 +108,7 @@
     </fragment>
     <fragment
         android:id="@+id/loadingScreen"
-        android:name="com.example.iamliterallymalding.LoadingScreen"
+        android:name="com.example.iamliterallymalding.Fragments.LoadingScreen"
         android:label="fragment_loading_screen"
         tools:layout="@layout/fragment_loading_screen" >
         <action

@@ -1,22 +1,26 @@
-package com.example.iamliterallymalding;
+package com.example.iamliterallymalding.Fragments;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
+
+import com.example.iamliterallymalding.R;
+import com.example.iamliterallymalding.Tasks.LidarFetch;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link radarPageFrag#newInstance} factory method to
+ * Use the {@link LoadingScreen#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class radarPageFrag extends Fragment implements View.OnClickListener{
+public class LoadingScreen extends Fragment {
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,7 +31,7 @@ public class radarPageFrag extends Fragment implements View.OnClickListener{
     private String mParam1;
     private String mParam2;
 
-    public radarPageFrag() {
+    public LoadingScreen() {
         // Required empty public constructor
     }
 
@@ -37,11 +41,11 @@ public class radarPageFrag extends Fragment implements View.OnClickListener{
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment radarPageFrag.
+     * @return A new instance of fragment LoadingScreen.
      */
     // TODO: Rename and change types and number of parameters
-    public static radarPageFrag newInstance(String param1, String param2) {
-        radarPageFrag fragment = new radarPageFrag();
+    public static LoadingScreen newInstance(String param1, String param2) {
+        LoadingScreen fragment = new LoadingScreen();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,19 +65,29 @@ public class radarPageFrag extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_radar_page, container, false);
 
-        Button radarHomeClick = v.findViewById(R.id.RadarPageButton);
-        radarHomeClick.setOnClickListener(this);
+
+        LidarFetch lidar = new LidarFetch();
+
+        Thread run = new Thread(lidar);
+
+        run.start();
+
+        View v = inflater.inflate(R.layout.fragment_loading_screen, container, false);
+
+        lidar.getOutput().observe(getViewLifecycleOwner(), new Observer<float[]>() {
+            @Override
+            public void onChanged(float[] floats) {
+                Bundle result = new Bundle();
+                result.putFloatArray("lidarData", lidar.getOutput().getValue());
+                //System.out.println(result.toString());
+                getParentFragmentManager().setFragmentResult("lidarDataRequest", result);
+                Navigation.findNavController(v).navigate(R.id.action_loadingScreen_to_generalOw);
+            }
+        });
 
         return v;
     }
 
-    @Override
-    public void onClick(View v) {
-        if(v.getId() == R.id.RadarPageButton){
-            Navigation.findNavController(v).navigate(R.id.action_radarPageFrag_to_generalOw);
-        }
-    }
+
 }

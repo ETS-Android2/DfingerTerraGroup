@@ -1,4 +1,4 @@
-package com.example.iamliterallymalding;
+package com.example.iamliterallymalding.Fragments;
 
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
@@ -6,21 +6,14 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
-import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.VideoView;
 
 import com.example.iamliterallymalding.EventHandlers.NavHandler;
 import com.example.iamliterallymalding.OpenGL.OpenGLRenderer;
-
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
+import com.example.iamliterallymalding.R;
 
 /**
  * A simple {@link Fragment} subclass.

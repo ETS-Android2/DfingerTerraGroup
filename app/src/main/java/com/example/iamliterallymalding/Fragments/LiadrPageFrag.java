@@ -1,25 +1,23 @@
-package com.example.iamliterallymalding;
+package com.example.iamliterallymalding.Fragments;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
-import com.example.iamliterallymalding.Tasks.LidarFetch;
+import com.example.iamliterallymalding.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link LoadingScreen#newInstance} factory method to
+ * Use the {@link LiadrPageFrag#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LoadingScreen extends Fragment {
-
-
+public class LiadrPageFrag extends Fragment implements View.OnClickListener{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,7 +28,7 @@ public class LoadingScreen extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public LoadingScreen() {
+    public LiadrPageFrag() {
         // Required empty public constructor
     }
 
@@ -40,11 +38,11 @@ public class LoadingScreen extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment LoadingScreen.
+     * @return A new instance of fragment LiadrPageFrag.
      */
     // TODO: Rename and change types and number of parameters
-    public static LoadingScreen newInstance(String param1, String param2) {
-        LoadingScreen fragment = new LoadingScreen();
+    public static LiadrPageFrag newInstance(String param1, String param2) {
+        LiadrPageFrag fragment = new LiadrPageFrag();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -64,29 +62,19 @@ public class LoadingScreen extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View v = inflater.inflate(R.layout.fragment_liadr_page, container, false);
 
-
-        LidarFetch lidar = new LidarFetch();
-
-        Thread run = new Thread(lidar);
-
-        run.start();
-
-        View v = inflater.inflate(R.layout.fragment_loading_screen, container, false);
-
-        lidar.getOutput().observe(getViewLifecycleOwner(), new Observer<float[]>() {
-            @Override
-            public void onChanged(float[] floats) {
-                Bundle result = new Bundle();
-                result.putFloatArray("lidarData", lidar.getOutput().getValue());
-                //System.out.println(result.toString());
-                getParentFragmentManager().setFragmentResult("lidarDataRequest", result);
-                Navigation.findNavController(v).navigate(R.id.action_loadingScreen_to_generalOw);
-            }
-        });
+        Button lidarHomeClick = v.findViewById(R.id.LidarPageButton);
+        lidarHomeClick.setOnClickListener(this);
 
         return v;
     }
 
-
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == R.id.LidarPageButton){
+            Navigation.findNavController(v).navigate(R.id.action_liadrPageFrag_to_generalOw);
+        }
+    }
 }
