@@ -50,7 +50,12 @@ public class SignupTask extends NetworkTask implements Runnable {
         }
 
         try {
-            users.insertOne(new Document().append("userName", super.username).append("password", hashedPass));
+            if (users.find(new Document("userName", super.username)).first() == null) {
+                users.insertOne(new Document().append("userName", super.username).append("password", hashedPass));
+            }
+            else {
+                return false;
+            }
         }
         catch (MongoException e){
             return false;
