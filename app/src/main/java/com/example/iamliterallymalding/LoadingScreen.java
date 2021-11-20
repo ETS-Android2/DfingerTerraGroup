@@ -1,7 +1,5 @@
 package com.example.iamliterallymalding;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +9,8 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.iamliterallymalding.Tasks.LidarFetch;
 
 /**
  * A simple {@link Fragment} subclass.

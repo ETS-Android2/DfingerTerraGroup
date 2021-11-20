@@ -40,7 +40,7 @@ public class LoginTask implements Runnable { //this class checks login informati
     public void run() { //task run method
 
         MongoDatabase userDb = MongoClients.create("mongodb://192.168.1.64:27017/?serverSelectionTimeoutMS=5000")
-                .getDatabase("userData"); //tell the method where to connect to the db and when to stop trying
+                .getDatabase("DFingerData"); //tell the method where to connect to the db and when to stop trying
 
         MongoCollection<Document> users = userDb.getCollection("users"); //saving the required collection in the db
 
