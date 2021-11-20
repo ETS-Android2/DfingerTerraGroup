@@ -14,10 +14,10 @@ import org.bson.Document;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
-public class SignupTask extends NetworkTask implements Runnable {
+public class SignUpTask extends NetworkTask implements Runnable {
 
 
-    public SignupTask (String username, String password){
+    public SignUpTask(String username, String password){
         super(username, password);
     }
 
