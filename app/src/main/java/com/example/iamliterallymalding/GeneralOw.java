@@ -82,8 +82,6 @@ public class GeneralOw extends Fragment {
 
         openGLView = v.findViewById(R.id.generalOVLidar);
 
-
-
         getParentFragmentManager().setFragmentResultListener("lidarDataRequest", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
@@ -91,7 +89,6 @@ public class GeneralOw extends Fragment {
                 GeneralOw.renderLidar();
             }
         });
-
 
 
         View radarView = v.findViewById(R.id.generalOVRadar);

@@ -1,4 +1,4 @@
-package com.example.iamliterallymalding;
+package com.example.iamliterallymalding.Encryption;
 
 import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
@@ -16,7 +16,7 @@ public class HashPass {
         this.password = password;
     }
 
-    private String generateHash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
+    public String generateHash() throws NoSuchAlgorithmException, InvalidKeySpecException {
         char[] passChars = password.toCharArray();
         byte[] salt = getSalt();
 
