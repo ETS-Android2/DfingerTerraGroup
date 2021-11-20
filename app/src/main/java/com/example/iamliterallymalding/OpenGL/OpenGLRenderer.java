@@ -3,19 +3,24 @@ package com.example.iamliterallymalding.OpenGL;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 
-import com.example.iamliterallymalding.Shapes.Triangle;
+import com.example.iamliterallymalding.Shapes.LidarPts;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 public class OpenGLRenderer implements GLSurfaceView.Renderer { //this class creates a an OpenGLRenderer
 
-    private Triangle trangle; //Declare triangle object (should be renamed to lidar)
+    private LidarPts lidarPts; //Declare triangle object (should be renamed to lidar)
+    private float[] lidarData;
+
+    public OpenGLRenderer(float [] lidarData){
+        this.lidarData = lidarData;
+    }
 
     @Override
     public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig) { //once the view surface is created
         GLES20.glClearColor(0.0f, 1.0f, 0.0f, 1.0f); //render a green background
-        trangle = new Triangle(); //instantiate the triangle (lidar) object
+        lidarPts = new LidarPts(lidarData); //instantiate the triangle (lidar) object
     }
 
     @Override
@@ -26,7 +31,7 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer { //this class cre
     @Override
     public void onDrawFrame(GL10 gl10) { //Once a frame is drawn
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT); //I don't know what this does but it won't work without it
-        trangle.draw(); //draw the triangle
+        lidarPts.draw(); //draw the triangle
     }
 
 

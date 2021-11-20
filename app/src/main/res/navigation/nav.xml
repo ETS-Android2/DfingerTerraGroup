@@ -25,6 +25,9 @@
             app:destination="@id/generalOw"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_logInFrag_to_loadingScreen"
+            app:destination="@id/loadingScreen" />
     </fragment>
     <fragment
         android:id="@+id/twoFAFrag"
@@ -32,13 +35,11 @@
         android:label="fragment_two_f_a"
         tools:layout="@layout/fragment_two_f_a" >
         <action
-            android:id="@+id/action_twoFAFrag_to_generalOw"
-            app:destination="@id/generalOw"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left" />
-        <action
             android:id="@+id/action_twoFAFrag_to_logInFrag"
             app:destination="@id/logInFrag" />
+        <action
+            android:id="@+id/action_twoFAFrag_to_loadingScreen"
+            app:destination="@id/loadingScreen" />
     </fragment>
     <fragment
         android:id="@+id/signUp"
@@ -103,6 +104,15 @@
         tools:layout="@layout/fragment_video_view" >
         <action
             android:id="@+id/action_videoViewFrag_to_generalOw"
+            app:destination="@id/generalOw" />
+    </fragment>
+    <fragment
+        android:id="@+id/loadingScreen"
+        android:name="com.example.iamliterallymalding.LoadingScreen"
+        android:label="fragment_loading_screen"
+        tools:layout="@layout/fragment_loading_screen" >
+        <action
+            android:id="@+id/action_loadingScreen_to_generalOw"
             app:destination="@id/generalOw" />
     </fragment>
 </navigation>

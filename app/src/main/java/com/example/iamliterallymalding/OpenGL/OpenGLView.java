@@ -17,6 +17,5 @@ public class OpenGLView extends GLSurfaceView { //creating the custom OGL view
     private void init() { //initialise the view
         setEGLContextClientVersion(2); //set the EGL context client version, in this case GLES 2.0
         setPreserveEGLContextOnPause(true); //No idea what this does
-        setRenderer (new OpenGLRenderer()); //creates a new renderer object and sets it as this view's renderer
     }
 }

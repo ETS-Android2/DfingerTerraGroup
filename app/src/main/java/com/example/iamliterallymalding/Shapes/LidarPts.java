@@ -9,7 +9,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
-public class Triangle {
+public class LidarPts {
     private FloatBuffer vertexBuffer;
     private final int shaderProgram; //declaring the vertex buffer and shader program objects
 
@@ -18,7 +18,7 @@ public class Triangle {
             "attribute vec4 vPosition;" +
             "void main() {" +
             "   gl_Position = vPosition;" +
-            "   gl_PointSize = 10.0;"+
+            "   gl_PointSize = 5.0;"+
             "}";
     private final String fragmentShaderCode = //same as above except for fragment shader
             "precision mediump float;" +
@@ -27,25 +27,25 @@ public class Triangle {
             "   gl_FragColor = vColor;" +
             "}";
 
-    static float[] triangleCoords = { // array of floating points for vertex coordinates
-            0.0f, 0.5f, 0.0f,
-            -0.5f,-0.3f, 0.0f,
-            0.5f, -0.3f, 0.0f
-    };
+    float[] lidarCoords; // array of floating points for vertex coordinates
+    
+    
 
-    static final int coordsInVertex = 3, vertexCount = triangleCoords.length / coordsInVertex, vertexStride = coordsInVertex * 4;
+    final int coordsInVertex = 2, vertexCount, vertexStride = coordsInVertex * 4;
     //various integers to keep track of vertex information
 
     private int positionHandle, colorHandle; //idk what this does
 
     float color[] = {1f, 0f, 0f, 1f}; //sets the color for the vertices
 
-    public Triangle () { //constructing triangle (lidar) object
-        ByteBuffer byteBuffer = ByteBuffer.allocateDirect(triangleCoords.length*4); //directly allocating four bytes of data for each coordinate of each vertex
+    public LidarPts(float [] lidarCoords) { //constructing triangle (lidar) object
+        this.lidarCoords = lidarCoords;
+        this.vertexCount = lidarCoords.length / coordsInVertex;
+        ByteBuffer byteBuffer = ByteBuffer.allocateDirect(lidarCoords.length*4); //directly allocating four bytes of data for each coordinate of each vertex
         byteBuffer.order(ByteOrder.nativeOrder()); //ordering the bytes in the buffer
 
         vertexBuffer = byteBuffer.asFloatBuffer(); //saving the byte buffer as a floating point buffer
-        vertexBuffer.put (triangleCoords); //putting the vertex coordinates in the buffer
+        vertexBuffer.put (lidarCoords); //putting the vertex coordinates in the buffer
         vertexBuffer.position(0); //setting the position of the buffer at the start
 
         int vertexShader = OpenGLRenderer.loadShader(GLES20.GL_VERTEX_SHADER, vertexShaderCode); //loading the vertex shader

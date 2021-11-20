@@ -3,7 +3,9 @@ package com.example.iamliterallymalding;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -37,6 +39,8 @@ public class GeneralOw extends Fragment {
     private String mParam2;
 
     private GLSurfaceView openGLView;
+    private float [] lidarData;
+
 
     public GeneralOw() {
         // Required empty public constructor
@@ -67,6 +71,7 @@ public class GeneralOw extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -77,14 +82,22 @@ public class GeneralOw extends Fragment {
 
         openGLView = v.findViewById(R.id.generalOVLidar);
 
+        getParentFragmentManager().setFragmentResultListener("lidarDataRequest", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
+                lidarData = bundle.getFloatArray("lidarData");
+                openGLView.setRenderer(new OpenGLRenderer(lidarData));
+            }
+        });
+
+
         View radarView = v.findViewById(R.id.generalOVRadar);
         radarView.setOnClickListener(new NavHandler(R.id.generalOVRadar, R.id.action_generalOw_to_radarPageFrag));
 
         View imageView = v.findViewById(R.id.generalOVImage);
         imageView.setOnClickListener(new NavHandler(R.id.generalOVImage, R.id.action_generalOw_to_imagePage));
 
-        View lidarView = v.findViewById(R.id.generalOVLidar);
-        lidarView.setOnClickListener(new NavHandler(R.id.generalOVLidar, R.id.action_generalOw_to_liadrPageFrag));
+        v.findViewById(R.id.generalOVLidar).setOnClickListener(new NavHandler(R.id.generalOVLidar, R.id.action_generalOw_to_liadrPageFrag));
 
         View videoView = v.findViewById(R.id.generalOVVideo);
         videoView.setOnClickListener(new NavHandler(R.id.generalOVVideo, R.id.action_generalOw_to_videoViewFrag));

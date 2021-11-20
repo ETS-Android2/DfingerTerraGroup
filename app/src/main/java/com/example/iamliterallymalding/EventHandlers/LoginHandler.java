@@ -34,7 +34,7 @@ public class LoginHandler implements View.OnClickListener{
         loading.setVisibility(View.VISIBLE); //make the loading spinner visible
 
         if (username.getText().toString().equals("admin") && password.getText().toString().equals("123")){ //DEBUG FEATURE. REMOVE BEFORE FINAL
-            Navigation.findNavController(view).navigate(R.id.action_logInFrag_to_generalOw);
+            Navigation.findNavController(view).navigate(R.id.action_logInFrag_to_loadingScreen);
         }
 
         else {
