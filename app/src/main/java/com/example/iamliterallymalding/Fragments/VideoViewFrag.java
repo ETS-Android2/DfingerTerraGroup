@@ -1,5 +1,6 @@
 package com.example.iamliterallymalding.Fragments;
 
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.VideoView;
 
 import com.example.iamliterallymalding.R;
 
@@ -67,6 +69,15 @@ public class VideoViewFrag extends Fragment implements View.OnClickListener{
 
         Button videoHomeClick = v.findViewById(R.id.videoPageButton);
         videoHomeClick.setOnClickListener(this);
+
+        VideoView videoview = (VideoView) v.findViewById(R.id.videoView);
+
+        Uri uri = Uri.parse("android.resource://com.example.iamliterallymalding/"+R.raw.videovpwater);
+
+        videoview.setVideoURI(uri);
+        videoview.requestFocus();
+        videoview.setOnPreparedListener(mediaPlayer -> videoview.start());
+
 
         return v;
     }

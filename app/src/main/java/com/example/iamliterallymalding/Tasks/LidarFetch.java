@@ -29,7 +29,7 @@ public class LidarFetch implements Runnable{
     @Override
     public void run() {
 
-        MongoCollection lidar = MongoClients.create("mongodb://192.168.0.12:27017/?serverSelectionTimeoutMS=5000")
+        MongoCollection lidar = MongoClients.create("mongodb://192.168.1.140:27017/?serverSelectionTimeoutMS=5000")
             .getDatabase("DFingerData").getCollection("lidar");
 
         ArrayList<Float> outputList = new ArrayList<>();

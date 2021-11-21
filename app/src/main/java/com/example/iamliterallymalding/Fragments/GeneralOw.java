@@ -1,5 +1,6 @@
 package com.example.iamliterallymalding.Fragments;
 
+import android.net.Uri;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 
@@ -10,6 +11,7 @@ import androidx.fragment.app.FragmentResultListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.VideoView;
 
 import com.example.iamliterallymalding.EventHandlers.NavHandler;
 import com.example.iamliterallymalding.OpenGL.OpenGLRenderer;
@@ -94,6 +96,14 @@ public class GeneralOw extends Fragment {
 
         View videoView = v.findViewById(R.id.generalOVVideo);
         videoView.setOnClickListener(new NavHandler(R.id.generalOVVideo, R.id.action_generalOw_to_videoViewFrag));
+
+        VideoView videoview = (VideoView) v.findViewById(R.id.generalOVVideo);
+
+        Uri uri = Uri.parse("android.resource://com.example.iamliterallymalding/"+R.raw.videovpwater);
+
+        videoview.setVideoURI(uri);
+        videoview.requestFocus();
+        videoview.setOnPreparedListener(mediaPlayer -> videoview.start());
         return v;
     }
 
