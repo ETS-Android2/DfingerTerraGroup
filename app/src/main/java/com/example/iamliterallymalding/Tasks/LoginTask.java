@@ -6,6 +6,7 @@ package com.example.iamliterallymalding.Tasks;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.iamliterallymalding.Encryption.HashPass;
 import com.mongodb.MongoException;
 
 import com.mongodb.client.MongoClients;
@@ -17,6 +18,8 @@ import org.bson.BsonInt64;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.Objects;
 
 
@@ -43,8 +46,20 @@ public class LoginTask extends NetworkTask implements Runnable { //this class ch
     private Boolean attemptLogin(MongoCollection<Document> users) { // attempt login
         Document query = new Document("userName", super.username); //create new query
 
-        return users.find(query).first() != null && Objects.requireNonNull(users.find(query).first()).getString("password")
-                .equals(super.password); //boolean algebra to check login
+        Document queryResult = users.find(query).first();
+
+        if (queryResult != null){
+            HashPass validator = new HashPass(password);
+            try {
+                System.out.println(password);
+                System.out.println(validator.validatePassword(queryResult.getString("password")));
+                System.out.println(queryResult.getString("password"));
+                return validator.validatePassword(queryResult.getString("password"));
+            } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
     }
 }
 

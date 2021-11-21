@@ -24,7 +24,28 @@ public class HashPass {
         SecretKeyFactory secret = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
 
         byte[] hash = secret.generateSecret(spec).getEncoded();
+        System.out.println(toHex(salt) + ":" + toHex(hash));
         return 1000 + ":" + toHex(salt) + ":" + toHex(hash);
+    }
+
+    public boolean validatePassword(String storedPass) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        String[] parts = storedPass.split(":");
+
+        byte[] salt = fromHex(parts[1]);
+        byte[] hash = fromHex(parts[2]);
+
+        PBEKeySpec spec = new PBEKeySpec(password.toCharArray(),
+                salt, Integer.parseInt(parts[0]),hash.length * 8);
+
+        SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+        byte[] testHash = keyFactory.generateSecret(spec).getEncoded();
+
+        int diff = hash.length ^ testHash.length;
+
+        for(int i = 0; i < hash.length && i < testHash.length; i++){
+            diff |= hash[i] ^ testHash[i];
+        }
+        return diff == 0;
     }
 
     private byte[] getSalt() throws NoSuchAlgorithmException{
@@ -34,10 +55,10 @@ public class HashPass {
         return salt;
     }
 
-    private String toHex(byte[] toConvert) throws NoSuchAlgorithmException{
-        BigInteger bigGus = new BigInteger(toConvert);
+    private String toHex(byte[] toConvert){
+        BigInteger bigGus = new BigInteger(1, toConvert);
         String output = bigGus.toString(16);
-        int paddingLength = (toConvert.length*2)-output.length();
+        int paddingLength = (toConvert.length * 2) - output.length();
         if(paddingLength > 0){
             return String.format("%0" + paddingLength + "d", 0) + output;
         }
@@ -45,6 +66,15 @@ public class HashPass {
             return output;
         }
     }
+
+    private byte[] fromHex (String hex){
+        byte[] bytes = new byte[hex.length() / 2];
+        for (int i = 0; i < bytes.length; i++){
+            bytes[i] = (byte)Integer.parseInt(hex.substring(2 * i, 2 * i + 2), 16);
+        }
+        return bytes;
+    }
+
 
 }
 
