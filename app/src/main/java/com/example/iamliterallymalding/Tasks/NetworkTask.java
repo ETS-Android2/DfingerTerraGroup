@@ -23,7 +23,7 @@ public class NetworkTask{
         this.username = username;
         this.password = password;
         this.output = new MutableLiveData<>();
-        this.userDb = MongoClients.create("mongodb://192.168.1.64:27017/?serverSelectionTimeoutMS=5000")
+        this.userDb = MongoClients.create("mongodb://192.168.0.12:27017/?serverSelectionTimeoutMS=5000")
                 .getDatabase("DFingerData");
     }
 

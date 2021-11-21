@@ -11,23 +11,25 @@
         android:layout_width="139dp"
         android:layout_height="82dp"
         android:layout_marginStart="136dp"
+        android:layout_marginBottom="88dp"
         android:text="@string/home"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="561dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/radarView"
-        android:layout_width="381dp"
-        android:layout_height="495dp"
+        android:layout_width="fill_parent"
+        android:layout_height="500dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="29dp"
         android:layout_marginEnd="14dp"
         android:layout_marginBottom="37dp"
-        android:src="@mipmap/radar_foreground"
+        android:scaleX="1.15"
+        android:scaleY="1.15"
         app:layout_constraintBottom_toTopOf="@+id/RadarPageButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/radar_foreground" />
+        app:srcCompat="@mipmap/radar_fixed_foreground" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,11 +27,12 @@
         android:layout_marginTop="50dp"
         android:clickable="true"
         android:focusable="true"
-        android:rotation="90"
+        android:scaleX="1.4"
+        android:scaleY="1.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/generalOVRadar"
-        app:srcCompat="@mipmap/runway_image_foreground"
-        tools:ignore="ImageContrastCheck"
+        app:srcCompat="@mipmap/runway_resized_foreground"
+        tools:ignore="ImageContrastCheck,SpeakableTextPresentCheck"
         tools:src="@tools:sample/avatars" />
 
     <VideoView
@@ -64,8 +65,11 @@
         android:layout_marginTop="50dp"
         android:clickable="true"
         android:focusable="true"
+        android:scaleX="1.2"
+        android:scaleY="1.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/radar_foreground"
+        app:srcCompat="@mipmap/radar_fixed_foreground"
+        tools:ignore="SpeakableTextPresentCheck"
         tools:src="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>
