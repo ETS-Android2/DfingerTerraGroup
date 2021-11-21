@@ -62,13 +62,19 @@
             app:exitAnim="@anim/slide_out_left" />
         <action
             android:id="@+id/action_generalOw_to_liadrPageFrag"
-            app:destination="@id/liadrPageFrag" />
+            app:destination="@id/liadrPageFrag"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
         <action
             android:id="@+id/action_generalOw_to_videoViewFrag"
-            app:destination="@id/videoViewFrag" />
+            app:destination="@id/videoViewFrag"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
         <action
             android:id="@+id/action_generalOw_to_imagePage"
-            app:destination="@id/imagePage" />
+            app:destination="@id/imagePage"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/imagePage"
@@ -77,7 +83,9 @@
         tools:layout="@layout/fragment_image_page" >
         <action
             android:id="@+id/action_imagePage_to_generalOw"
-            app:destination="@id/generalOw" />
+            app:destination="@id/generalOw"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/radarPageFrag"
@@ -86,7 +94,9 @@
         tools:layout="@layout/fragment_radar_page" >
         <action
             android:id="@+id/action_radarPageFrag_to_generalOw"
-            app:destination="@id/generalOw" />
+            app:destination="@id/generalOw"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/liadrPageFrag"
@@ -95,7 +105,9 @@
         tools:layout="@layout/fragment_liadr_page" >
         <action
             android:id="@+id/action_liadrPageFrag_to_generalOw"
-            app:destination="@id/generalOw" />
+            app:destination="@id/generalOw"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/videoViewFrag"
@@ -104,7 +116,9 @@
         tools:layout="@layout/fragment_video_view" >
         <action
             android:id="@+id/action_videoViewFrag_to_generalOw"
-            app:destination="@id/generalOw" />
+            app:destination="@id/generalOw"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/loadingScreen"
