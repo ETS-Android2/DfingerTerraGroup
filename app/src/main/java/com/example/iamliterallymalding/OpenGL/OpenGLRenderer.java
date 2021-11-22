@@ -19,7 +19,7 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer { //this class cre
 
     @Override
     public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig) { //once the view surface is created
-        GLES20.glClearColor(0.0f, 1.0f, 0.0f, 1.0f); //render a green background
+        GLES20.glClearColor(0.0f, 0.0f, 0.0f, 1.0f); //render a green background
         lidarPts = new LidarPts(lidarData); //instantiate the triangle (lidar) object
     }
 
