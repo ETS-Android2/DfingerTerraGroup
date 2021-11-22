@@ -14,6 +14,7 @@ import org.bson.Document;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
 public class LidarFetch implements Runnable{
@@ -29,7 +30,7 @@ public class LidarFetch implements Runnable{
     @Override
     public void run() {
 
-        MongoCollection lidar = MongoClients.create("mongodb://192.168.1.140:27017/?serverSelectionTimeoutMS=5000")
+        MongoCollection lidar = MongoClients.create("mongodb://192.168.1.64:27017/?serverSelectionTimeoutMS=5000")
             .getDatabase("DFingerData").getCollection("lidar");
 
         ArrayList<Float> outputList = new ArrayList<>();
@@ -45,10 +46,11 @@ public class LidarFetch implements Runnable{
             output[i] = outputList.get(i)*0.8f;
         }
 
+        long timer = System.nanoTime() + TimeUnit.SECONDS.toNanos(2);
+        while(timer>System.nanoTime()){
+            System.out.println("waiting");
+        }
+
         this.output.postValue(output);
-
     }
-
-
-
 }

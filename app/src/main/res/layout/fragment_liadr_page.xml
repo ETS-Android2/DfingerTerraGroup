@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.iamliterallymalding.Fragments.LiadrPageFrag" >
 
-    <VideoView
+    <com.example.iamliterallymalding.OpenGL.OpenGLView
         android:id="@+id/LidarView"
         android:layout_width="366dp"
         android:layout_height="527dp"

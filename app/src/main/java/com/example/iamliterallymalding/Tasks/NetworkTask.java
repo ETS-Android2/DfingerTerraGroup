@@ -14,16 +14,16 @@ import org.bson.conversions.Bson;
 
 public class NetworkTask{
 
-    protected String username, password;
+    protected String username, password, email;
     protected MutableLiveData<Integer> output;
     protected MongoDatabase userDb;
 
 
-    public NetworkTask (String username, String password){
+    protected NetworkTask (String username, String password){
         this.username = username;
         this.password = password;
         this.output = new MutableLiveData<>();
-        this.userDb = MongoClients.create("mongodb://192.168.1.140:27017/?serverSelectionTimeoutMS=5000")
+        this.userDb = MongoClients.create("mongodb://192.168.1.64:27017/?serverSelectionTimeoutMS=5000")
                 .getDatabase("DFingerData");
     }
 

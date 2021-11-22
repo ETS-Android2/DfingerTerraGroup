@@ -43,11 +43,11 @@ public class SignUpHandler implements View.OnClickListener{
             signUpTask.getOutput().observe((LifecycleOwner) ctx, new Observer<Integer>() {
                 @Override
                 public void onChanged(Integer integer) {
-                    if (signUpTask.getOutput().getValue() == -1){
+                    if (integer == -1){
                         loading.setVisibility(View.INVISIBLE);
                         Toast toast = Toast.makeText(ctx,"Something went wrong contacting the database, please try later", Toast.LENGTH_SHORT);
                         toast.show();
-                    } else if (signUpTask.getOutput().getValue() == 0){
+                    } else if (integer == 0){
                         loading.setVisibility(View.INVISIBLE);
                         Toast toast = Toast.makeText(ctx, "User Already exists", Toast.LENGTH_SHORT);
                         toast.show();

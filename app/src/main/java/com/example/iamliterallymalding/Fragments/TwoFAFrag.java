@@ -1,14 +1,21 @@
 package com.example.iamliterallymalding.Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.iamliterallymalding.EventHandlers.TwoFAHandler;
 import com.example.iamliterallymalding.R;
+import com.example.iamliterallymalding.Tasks.TwoFATask;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,6 +68,27 @@ public class TwoFAFrag extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_two_f_a, container, false);
+        View v = inflater.inflate(R.layout.fragment_two_f_a, container, false);
+
+        Context ctx = v.getContext();
+
+        getParentFragmentManager().setFragmentResultListener("emailRequest", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                System.out.println(result.getString("email"));
+                TwoFATask sendCode = new TwoFATask(result.getString("email"));
+                Thread sender = new Thread (sendCode);
+                sender.start();
+                sendCode.getOutput().observe((LifecycleOwner) ctx, new Observer<Integer>() {
+                    @Override
+                    public void onChanged(Integer integer) {
+                        System.out.println(integer);
+                        if (integer != -1)
+                            v.findViewById(R.id.TwoFASubmit).setOnClickListener(new TwoFAHandler(integer, v.findViewById(R.id.TwoFACode)));
+                    }
+                });
+            }
+        });
+        return v;
     }
 }

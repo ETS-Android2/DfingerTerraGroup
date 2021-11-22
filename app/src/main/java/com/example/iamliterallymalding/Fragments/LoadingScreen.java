@@ -1,7 +1,9 @@
 package com.example.iamliterallymalding.Fragments;
 
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.navigation.Navigation;
@@ -12,6 +14,9 @@ import android.view.ViewGroup;
 
 import com.example.iamliterallymalding.R;
 import com.example.iamliterallymalding.Tasks.LidarFetch;
+
+import java.time.LocalTime;
+import java.util.concurrent.TimeUnit;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -76,11 +81,11 @@ public class LoadingScreen extends Fragment {
         View v = inflater.inflate(R.layout.fragment_loading_screen, container, false);
 
         lidar.getOutput().observe(getViewLifecycleOwner(), new Observer<float[]>() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onChanged(float[] floats) {
                 Bundle result = new Bundle();
                 result.putFloatArray("lidarData", lidar.getOutput().getValue());
-                //System.out.println(result.toString());
                 getParentFragmentManager().setFragmentResult("lidarDataRequest", result);
                 Navigation.findNavController(v).navigate(R.id.action_loadingScreen_to_generalOw);
             }

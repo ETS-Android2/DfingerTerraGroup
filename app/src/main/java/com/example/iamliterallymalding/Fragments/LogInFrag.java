@@ -68,7 +68,7 @@ public class LogInFrag extends Fragment{
         TextView signupBtn = v.findViewById(R.id.signupBtn);
 
         signupBtn.setOnClickListener(new NavHandler(R.id.signupBtn, R.id.action_logInFrag_to_signUp));
-        logInBtn.setOnClickListener(new LoginHandler(v.findViewById(R.id.progressSpinner), this.getActivity(), attemptedLogin, attemptedPass));
+        logInBtn.setOnClickListener(new LoginHandler(v.findViewById(R.id.progressSpinner), this.getActivity(), attemptedLogin, attemptedPass, getParentFragmentManager()));
 
         return v;
     }

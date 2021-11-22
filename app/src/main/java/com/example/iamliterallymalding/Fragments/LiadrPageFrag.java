@@ -1,8 +1,11 @@
 package com.example.iamliterallymalding.Fragments;
 
+import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -10,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.iamliterallymalding.OpenGL.OpenGLRenderer;
 import com.example.iamliterallymalding.R;
 
 /**
@@ -27,6 +31,9 @@ public class LiadrPageFrag extends Fragment implements View.OnClickListener{
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private static GLSurfaceView openGLView;
+    private static float [] lidarData;
 
     public LiadrPageFrag() {
         // Required empty public constructor
@@ -65,6 +72,16 @@ public class LiadrPageFrag extends Fragment implements View.OnClickListener{
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_liadr_page, container, false);
 
+        openGLView = v.findViewById(R.id.LidarView);
+
+        getParentFragmentManager().setFragmentResultListener("lidarRequest", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
+                lidarData = bundle.getFloatArray("lidarData").clone();
+                LiadrPageFrag.renderLidar();
+            }
+        });
+
         Button lidarHomeClick = v.findViewById(R.id.LidarPageButton);
         lidarHomeClick.setOnClickListener(this);
 
@@ -77,4 +94,34 @@ public class LiadrPageFrag extends Fragment implements View.OnClickListener{
             Navigation.findNavController(v).navigate(R.id.action_liadrPageFrag_to_generalOw);
         }
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        try {
+            openGLView.onResume();
+        }
+        catch (NullPointerException e){
+            renderLidar();
+            openGLView.onResume();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        openGLView.onPause();
+
+        try {
+            openGLView.onPause();
+        }
+        catch (NullPointerException e){
+            renderLidar();
+            openGLView.onPause();
+        }
+    }
+
+    protected static void renderLidar(){
+        openGLView.setRenderer(new OpenGLRenderer(lidarData));
+    }
+
 }

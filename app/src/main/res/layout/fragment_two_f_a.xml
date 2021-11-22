@@ -10,7 +10,7 @@
     <!-- TODO: Update blank fragment layout -->
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/TwoFASubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
@@ -20,10 +20,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumberPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/TwoFACode" />
 
     <EditText
-        android:id="@+id/editTextNumberPassword"
+        android:id="@+id/TwoFACode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="101dp"
@@ -33,7 +33,7 @@
         android:ems="10"
         android:inputType="numberPassword"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/TwoFASubmit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
@@ -48,7 +48,7 @@
         android:layout_marginBottom="75dp"
         android:text="@string/please_enter_your_2fa_code"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextNumberPassword"
+        app:layout_constraintBottom_toTopOf="@+id/TwoFACode"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
